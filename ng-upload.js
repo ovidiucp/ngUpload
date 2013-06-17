@@ -6,9 +6,9 @@
 //
 // <div ng-app="app">
 //   <div ng-controller="mainCtrl">
-//    <form action="/uploads" ng-upload> 
+//    <form action="/uploads" ng-upload>
 //      <input type="file" name="avatar"></input>
-//      <input type="submit" value="Upload" 
+//      <input type="submit" value="Upload"
 //         upload-submit="submited(content, completed)"></input>
 //    </form>
 //  </div>
@@ -20,7 +20,7 @@
 //        if (completed) {
 //          console.log(content);
 //        }
-//      }  
+//      }
 //  });
 //
 angular.module('ngUpload', [])
@@ -28,17 +28,17 @@ angular.module('ngUpload', [])
     return {
       restrict: 'AC',
       link: function(scope, element, attrs) {
-        // Options (just 1 for now) 
+        // Options (just 1 for now)
         // Each option should be prefixed with 'upload-options-' or 'uploadOptions'
         // {
         //    // specify whether to enable the submit button when uploading forms
-        //    enableControls: bool 
+        //    enableControls: bool
         // }
         var options = {};
         options.enableControls = attrs.uploadOptionsEnableControls;
 
         // submit the form - requires jQuery
-        var form = angular.element(element).parents('form'); 
+        var form = angular.element(element).parents('form');
 
         // Retrieve the callback function
         var fn = $parse(attrs.uploadSubmit);
@@ -69,7 +69,7 @@ angular.module('ngUpload', [])
             // get content - requires jQuery
             var content = iframe.contents().find('body').html();
             // execute the upload response function in the active scope
-            scope.$apply(function () { 
+            scope.$apply(function () {
               fn(scope, { content: content, completed: true});
             });
             // remove iframe
@@ -80,8 +80,8 @@ angular.module('ngUpload', [])
             element.attr('title', 'Click to start upload.');
           });
 
-          scope.$apply(function () { 
-            fn(scope, {content: "Please wait...", completed: false }); 
+          scope.$apply(function () {
+            fn(scope, {content: null, completed: false });
           });
 
           var enabled = true;
