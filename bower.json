@@ -1,6 +1,6 @@
 {
   "name": "ovidiu-ngUpload",
-  "version": "0.3.8",
+  "version": "0.3.7.1",
   "main": "ng-upload.js",
   "ignore": [
     "**/.*",
